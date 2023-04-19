@@ -1,0 +1,23 @@
+* {
+  margin: 0 auto;
+}
+
+:root {
+  --main-bg-color: #4d7c5a;
+  --side-bg-color: #d9bf8e;
+  --dark-stroke-color: #694c15;
+  --light-stroke-color: #9a6f1e;
+}
+
+.ir {
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
