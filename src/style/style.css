@@ -1,5 +1,10 @@
 * {
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 :root {
@@ -10,12 +15,11 @@
 }
 
 .ir {
-  overflow: hidden;
   position: absolute;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  text-indent: -9999px;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 body {
@@ -29,15 +33,185 @@ body {
 
 .wrapper {
   display: flex;
-  gap: 28px;
+  gap: 0 28px;
   justify-content: center;
 }
 
+.vending-machine,
+.my-info {
+  flex-basis: 360px;
+}
+
+/* 자판기 영역 */
 .vending-machine {
-  width: 360px;
+  padding: 21px 28px;
   height: 545px;
   background-color: var(--side-bg-color);
   border-radius: 10px;
+}
+
+.vending-machine .list-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-item {
+  width: 93px;
+  height: 130px;
+  border-radius: 10%;
+  border: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-item:hover {
+  background-color: red;
+  outline: 3px solid #4d7c5a;
+}
+
+.btn-item:active {
+  /* border-radius: 10px; */
+  outline: 3px solid #4d7c5a;
+}
+
+.vending-machine .list-item li.sold-out::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  border-radius: 10px;
+  background: no-repeat center/60px 46px url(../images/sold-out.png)
+    rgba(0, 0, 0, 0.5);
+}
+
+.vending-machine .list-item li.sold-out {
+  pointer-events: none;
+}
+
+.img-item {
+  display: block;
+}
+
+.tit-item {
+  font-size: 12px;
+}
+
+.text-price {
+  display: block;
+  width: 70px;
+  height: 20px;
+  line-height: 20px;
+  color: #fff;
+  font-size: 11px;
+  background-color: #9a6f1e;
+  border-radius: 20px;
+  margin: 6px auto 0;
+}
+
+.info-balance {
+  display: block;
+  width: 200px;
+  height: 32px;
+  border-radius: 5px;
+  line-height: 32px;
+  background-color: #fff;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.btn-return,
+.btn-put {
+  width: 93px;
+  height: 32px;
+  border-radius: 5px;
+  border: none;
+  background-color: #9a6f1e;
+}
+
+.section-inp {
+  margin: 20px 0;
+  display: flex;
+}
+
+.inp-put {
+  display: block;
+  width: 200px;
+  height: 32px;
+  border-radius: 5px;
+  line-height: 32px;
+  background-color: #fff;
+  margin-right: 10px;
+  border: none;
+
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.section-get-item {
+  display: flex;
+  gap: 10px;
+}
+
+.list-item-staged {
+  padding: 12px;
+  width: 200px;
+  height: 106px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+
+.list-item-staged li {
+  border-radius: 5px;
+  background-color: #d9bf8e;
+}
+
+.list-item-staged li + li {
+  margin-top: 6px;
+}
+
+.list-item-staged .img-item,
+.list-item-staged .text-item {
+  float: left;
+}
+
+.list-item-staged .btn-staged {
+  width: 100%;
+  padding: 8px;
+}
+
+.list-item-staged .text-item {
+  margin-left: 10px;
+  line-height: 32px;
+  font-size: 9px;
+}
+
+.list-item-staged .num-counter {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #9a6f1e;
+  border-radius: 5px;
+}
+
+.list-item-staged .img-item {
+  width: 18px;
+  height: 32px;
+}
+
+.btn-purchase {
+  width: 94px;
+  height: 106px;
+  border-radius: 10px;
+  border: none;
 }
 
 .my-info {
