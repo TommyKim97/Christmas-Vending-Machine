@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas Vending Machine</title>
+    <link rel="stylesheet" href="./src/style/reset.css" />
+    <link rel="stylesheet" href="./src/style/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="ir">크리스마스 벤딩 머신</h1>
+      <img
+        class="img-top"
+        src="./src/images/top-img.png"
+        alt="크리스마스 오너먼트 자판기입니다."
+      />
+    </header>
+    <main>
+      <section class="vending-machine">
+        <h2 class="ir">자판기</h2>
+        <section class="product-list">
+          <h3 class="ir">상품 목록</h3>
+          <ul class="products">
+            <li class="products-item">
+              <img
+                src="./src/images/big-cookie.png"
+                alt="트리 모양 쿠키 장식"
+              />
+              <p>Tree Cookie</p>
+              <span>❄️1000</span>
+            </li>
+            <li class="products-item">
+              <img src="./src/images/big-bell.png" alt="종 모양 장식" />
+              <p>Bell</p>
+              <span>❄️500</span>
+            </li>
+            <li class="products-item">
+              <img src="./src/images/big-sock.png" alt="양말 모양 장식" />
+              <p>Sock</p>
+              <span>❄️2000</span>
+            </li>
+            <li class="products-item">
+              <img src="./src/images/big-ball.png" alt="유리 구슬 장식" />
+              <p>Glass Ball</p>
+              <span>❄️2000</span>
+            </li>
+            <li class="products-item">
+              <img src="./src/images/big-candy.png" alt="사탕 장식" />
+              <p>Lolly Pop Candy</p>
+              <span>❄️1000</span>
+            </li>
+            <li class="products-item">
+              <img src="./src/images/big-gloves.png" alt="장갑 장식" />
+              <p>Santa's Gloves</p>
+              <span>❄️2000</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 잔액과 거스름돈 -->
+        <section class="wrapper">
+          <h3 class="ir">잔액 반환</h3>
+          <section class="rest">
+            <h4 class="ir">잔액</h4>
+            <p>잔액:</p>
+            <span class="changes-snow">1,000</span>
+          </section>
+          <button type="button">거스름돈 반환</button>
+        </section>
+        <section class="wrapper">
+          <h3 class="ir">입금액 입력</h3>
+          <form>
+            <input
+              type="number"
+              name="insert"
+              value=""
+              placeholder="입금액 입력"
+            />
+          </form>
+          <button type="button">입금</button>
+        </section>
+        <section class="wrapper">
+          <h3 class="ir">장바구니와 구매 버튼</h3>
+          <ul class="cart">
+            <li class="cart-item">
+              <img src="./src/images/small-cookie.png" alt="장바구니 목록" />
+              <p>Tree Cookie</p>
+              <span>1</span>
+            </li>
+          </ul>
+          <button type="button">구매</button>
+        </section>
+      </section>
+      <!-- 유저 정보 -->
+      <section class="my-info">
+        <h2 class="ir">개인 구매 정보</h2>
+        <section class="budget-info">
+          <h3 class="ir">소원별과 소지금 정보</h3>
+          <article class="donate">
+            <p>소원별을 모아 기부를 해보세요!</p>
+            <span>소원별이 10개 모이면, 별 하나당 100원이 기부됩니다.</span>
+            <progress value="0" max="10"></progress>
+          </article>
+          <article class="budget">
+            <p>소지금:</p>
+            <span class="budget"></span>
+          </article>
+        </section>
+        >
+      </section>
+      <section class="my-ornament">
+        <h2>나의 오너먼트</h2>
+        <ul class="my-ornament">
+          <li class="ornament-list">
+            <img src="./src/images/small-cookie.png" alt="구매한 오너먼트" />
+            <p>Tree Cookie</p>
+            <span>1</span>
+          </li>
+          <li class="ornament-list">
+            <img src="./src/images/small-bell.png" alt="구매한 오너먼트" />
+            <p>Bell</p>
+            <span>2</span>
+          </li>
+        </ul>
+        <p>총 갯수 :</p>
+        <span>9개</span>
+      </section>
+    </main>
+  </body>
+</html>
