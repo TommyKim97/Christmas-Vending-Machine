@@ -21,3 +21,40 @@
 body {
   background-color: var(--main-bg-color);
 }
+
+.img-top {
+  display: block;
+  margin: 0 auto 76px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+}
+
+.vending-machine {
+  width: 360px;
+  height: 545px;
+  background-color: var(--side-bg-color);
+  border-radius: 10px;
+}
+
+.my-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 360px;
+}
+
+.my-budget {
+  height: 161px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.my-ornament {
+  height: 360px;
+  background-color: #fff;
+  border-radius: 10px;
+}
