@@ -1,0 +1,38 @@
+[
+  {
+    "img": "cookie.png",
+    "name": "Tree Cookie",
+    "price": 1000,
+    "stock": 10
+  },
+  {
+    "img": "bells.png",
+    "name": "Jingle Bells",
+    "price": 500,
+    "stock": 4
+  },
+  {
+    "img": "sock.png",
+    "name": "Magic Sock",
+    "price": 2000,
+    "stock": 3
+  },
+  {
+    "img": "glass_ball.png",
+    "name": "Glass Ball",
+    "price": 2000,
+    "stock": 20
+  },
+  {
+    "img": "candy.png",
+    "name": "Cane",
+    "price": 1000,
+    "stock": 5
+  },
+  {
+    "img": "gloves.png",
+    "name": "Santa's Gloves",
+    "price": 2000,
+    "stock": 6
+  }
+]
