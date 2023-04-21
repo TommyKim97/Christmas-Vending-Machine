@@ -5,20 +5,21 @@
 }
 
 * ::-webkit-scrollbar {
-  width: 15px;
-  background-color: #fff;
-  border-radius: 10px;
+  width: 10px;
 }
 
 * ::-webkit-scrollbar-thumb {
   background-color: var(--dark-stroke-color);
   border-radius: 10px;
+  background-clip: padding-box;
+  border: 3px solid transparent;
 }
 
 * ::-webkit-scrollbar-track {
-  background-color: var(--side-bg-color);
+  background-color: transparent;
   border-radius: 10px;
 }
+
 button:hover {
   cursor: pointer;
 }
@@ -28,6 +29,7 @@ button:hover {
   --side-bg-color: #d9bf8e;
   --dark-stroke-color: #694c15;
   --light-stroke-color: #9a6f1e;
+  --light-bg-color: rgb(255, 246, 216);
 }
 
 .ir {
@@ -36,6 +38,10 @@ button:hover {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.btn-style {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* 레이아웃 */
@@ -83,14 +89,16 @@ body {
 }
 
 .btn-item:hover {
-  background-color: red;
-  outline: 3px solid #4d7c5a;
+  outline: 3px solid var(--dark-stroke-color);
 }
 
 .btn-item:active {
-  outline: 3px solid #4d7c5a;
+  outline: 3px solid var(--dark-stroke-color);
 }
 
+.vending-machine .list-item li {
+  position: relative;
+}
 .vending-machine .list-item li.sold-out::before {
   display: block;
   position: absolute;
@@ -101,7 +109,7 @@ body {
   bottom: 0;
   z-index: 1;
   border-radius: 10px;
-  background: no-repeat center/60px 46px url(../images/sold-out.png)
+  background: no-repeat center/81px 97px url(../images/sold_out.png)
     rgba(0, 0, 0, 0.5);
 }
 
@@ -138,9 +146,16 @@ body {
   height: 32px;
   border-radius: 5px;
   line-height: 32px;
-  background-color: #fff;
+  background-color: var(--light-bg-color);
   margin-right: 10px;
   padding-left: 10px;
+  font-size: 15px;
+}
+
+.info-balance .text-balance::before,
+.info-mysnowflake .amount-mysnowflake::before {
+  content: "❄️ ";
+  margin: 0 5px;
 }
 
 .btn-return,
@@ -149,7 +164,13 @@ body {
   height: 32px;
   border-radius: 5px;
   border: none;
-  background-color: var(--light-stroke-color);
+  background-color: #fff;
+  font-size: 13;
+}
+
+.btn-purchase {
+  background-color: var(--dark-stroke-color);
+  color: #fff;
 }
 
 .section-inp {
@@ -158,6 +179,7 @@ body {
 }
 
 .inp-put {
+  font-size: 15px;
   display: block;
   width: 200px;
   height: 32px;
@@ -193,34 +215,43 @@ body {
 }
 
 .list-item-staged .img-item,
-.list-item-staged .text-item {
+.list-item-staged .txt-item {
   float: left;
 }
 
 .list-item-staged .btn-staged {
   width: 100%;
   padding: 8px;
+  border: 1px solid var(--dark-stroke-color);
+  border-radius: 5px;
 }
 
-.list-item-staged .text-item {
-  margin-left: 10px;
+.vending-machine .list-item-staged .btn-staged {
+  background-color: var(--side-bg-color);
+}
+
+.list-item-staged .txt-item {
+  margin-left: 3px;
+  font-size: 12px;
   line-height: 32px;
-  font-size: 9px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-item-staged .num-counter {
   float: right;
   display: flex;
+  margin-top: 3px;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--light-stroke-colo);
+  width: 25px;
+  height: 25px;
+  border: 1px solid var(--light-stroke-color);
+  background-color: #fff;
   border-radius: 5px;
 }
 
 .list-item-staged .img-item {
-  width: 18px;
   height: 32px;
 }
 
@@ -314,9 +345,13 @@ progress::after {
 
 .my-info .list-item-staged {
   height: 250px;
-  background-color: #4d7c5a;
+  background-color: var(--side-bg-color);
   margin-top: 20px;
   width: 305px;
+}
+
+.my-info .list-item-staged .btn-staged {
+  background-color: #fff;
 }
 
 .text-total {
