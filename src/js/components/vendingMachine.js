@@ -85,6 +85,62 @@ class VendingMachine {
         this.balance.textContent = "❄️ ";
       }
     });
+
+    /**
+     * 3. 자판기 메뉴 기능
+     * 아이템을 누르면
+     * 잔액 = 잔액 - 아이템 가격
+     * 잔액 < 아이템 가격 -> "눈송이가 부족합니다. 자판기에 눈송이를 넣어주세요!" 경고창이 나타난다.
+     * 아이템이 획득 가능 창에 등록된다.
+     * 아이템 버튼의 data-count 값이 -1 된다.
+     * data-count = 0 -> 부모 li에 sold-out 클래스를 붙인다.
+     */
+    const btnsItem = this.itemList.querySelectorAll("button");
+    btnsItem.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const targetEl = event.currentTarget;
+        const balanceVal = parseInt(
+          this.balance.textContent.replaceAll(",", "")
+        );
+
+        // 선택되었는가?
+        let isStaged = false;
+        const targetElPrice = parseInt(targetEl.dataset.price);
+        const stagedListItem = this.stagedList.querySelectorAll("li");
+
+        // 입금된 눈송이가 제품 값보다 많거나 같을 경우
+        if (balanceVal >= targetElPrice) {
+          this.balance.textContent =
+            "❄️ " + new Intl.NumberFormat().format(balanceVal - targetElPrice);
+
+          for (const item of stagedListItem) {
+            if (item.dataset.item === targetEl.dataset.item) {
+              item.querySelector(".num-counter").textContent++;
+              isStaged = true;
+              break;
+            }
+          }
+
+          // 해당 아이템을 처음 선택한 경우
+          if (!isStaged) {
+            this.stagedItemGenerator(targetEl);
+          }
+
+          targetEl.dataset.count--;
+
+          if (parseInt(targetEl.dataset.count) === 0) {
+            targetEl.parentElement.classList.add("sold-out");
+            const warning = document.createElement("em");
+            warning.textContent =
+              "해당 오너먼트는 품절입니다. 내년 겨울에 만나요!";
+            warning.classList.add("ir");
+            targetEl.parentElement.insertBefore(warning, targetEl);
+          }
+        } else {
+          alert("눈송이가 부족해요! 눈송이를 더 넣어주세요!");
+        }
+      });
+    });
   }
 }
 
