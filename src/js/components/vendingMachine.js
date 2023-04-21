@@ -25,7 +25,7 @@ class VendingMachine {
     stagedItem.dataset.price = target.dataset.price;
     stagedItem.innerHTML = `
         <button type="button" class="btn-staged">
-            <img src="src/images/${target.dataset.img}" alt="${target.dataset.item}" class="img-item">
+            <img src="src/images/${target.dataset.img}" alt="${target.dataset.item}" class="img-item" >
             <strong class="txt-item">${target.dataset.item}</strong>
             <span class="num-counter">1</span>
         </button>
@@ -127,9 +127,9 @@ class VendingMachine {
             this.stagedItemGenerator(targetEl);
           }
 
-          targetEl.dataset.count--;
+          targetEl.dataset.stock--;
 
-          if (parseInt(targetEl.dataset.count) === 0) {
+          if (parseInt(targetEl.dataset.stock) === 0) {
             targetEl.parentElement.classList.add("sold-out");
             const warning = document.createElement("em");
             warning.textContent =
@@ -144,8 +144,8 @@ class VendingMachine {
     });
 
     /**
-     * 4. 획득 버튼 기능
-     * 획득 버튼을 누르면
+     * 4. 구매 버튼 기능
+     * 구매 버튼을 누르면
      * 선택한 아이템 목록이 획득한 아이템 목록으로 이동
      * 획득한 아이템의 금액을 모두 합해 총금액을 업데이트
      */

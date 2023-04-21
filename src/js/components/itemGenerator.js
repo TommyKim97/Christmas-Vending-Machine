@@ -25,11 +25,8 @@ class ItemGenerator {
     data.forEach((el) => {
       const item = document.createElement("li");
       const itemTemplate = `
-            <button type="button" class="btn-item" data-item="${el.name}" data-count="${el.stock}" data-price="${el.price}" data-img="${el.img}">
-                <div class="img-wrapper">
-                    <img src="src/images/${el.img}" alt=
-                    ${el.name}" class="img-item" height="72">
-                </div>
+            <button type="button" class="btn-item" data-item="${el.name}" data-stock="${el.stock}" data-price="${el.price}" data-img="${el.img}">
+                <img src="src/images/${el.img}" alt="${el.name}" class="img-item" height="72">
                 <strong class="tit-item">${el.name}</strong>
                 <span class="text-price">❄️ ${el.price}</span>
             </button>
