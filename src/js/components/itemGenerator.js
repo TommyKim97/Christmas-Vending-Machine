@@ -1,6 +1,6 @@
 class ItemGenerator {
   constructor() {
-    this.itemList = document.querySelector("list-item");
+    this.itemList = document.querySelector(".list-item");
   }
 
   async setup() {
