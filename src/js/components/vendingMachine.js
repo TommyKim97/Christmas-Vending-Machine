@@ -46,6 +46,7 @@ class VendingMachine {
     this.btnPut.addEventListener("click", (event) => {
       const inputCost = parseInt(this.inputCostEl.value);
       const mySnowVal = parseInt(this.mySnow.textContent.replaceAll(",", ""));
+      //잔액 (입금액들의 합)
       const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
 
       if (inputCost) {
@@ -59,10 +60,29 @@ class VendingMachine {
             new Intl.NumberFormat().format(
               (balanceVal ? balanceVal : 0) + inputCost
             );
+          console.log("입금 성공");
         } else {
           alert("눈송이가 부족해요!");
+          console.log("입금 실패");
         }
         this.inputCostEl.value = null;
+      }
+    });
+
+    /**
+     * 2. 거스름돈 반환 버튼 기능
+     * 반환 버튼을 누르면
+     * 소지금 = 소지금 + 잔액
+     * 잔액 창은 초기화
+     */
+    this.btnReturn.addEventListener("click", (event) => {
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
+      const mySnowVal = parseInt(this.mySnow.textContent.replaceAll(",", ""));
+
+      if (balanceVal) {
+        this.mySnow.textContent =
+          "❄️ " + new Intl.NumberFormat().format(balanceVal + mySnowVal);
+        this.balance.textContent = "❄️ ";
       }
     });
   }
