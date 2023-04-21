@@ -1,8 +1,8 @@
 class VendingMachine {
   constructor() {
     const vMachine = document.querySelector(".vending-machine");
-    this.balance = vMachine.querySelector(".text-balance");
     this.itemList = vMachine.querySelector(".list-item");
+    this.balance = vMachine.querySelector(".text-balance");
     this.inputCostEl = vMachine.querySelector(".inp-put");
     this.btnPut = vMachine.querySelector(".btn-put");
     this.btnReturn = vMachine.querySelector(".btn-return");
@@ -52,14 +52,13 @@ class VendingMachine {
       if (inputCost) {
         // 입금액이 소지금보다 작다면
         if (inputCost <= mySnowVal && inputCost > 0) {
-          this.mySnow.textContent =
-            "❄️ " + new Intl.NumberFormat().format(mySnowVal - inputCost);
+          this.mySnow.textContent = new Intl.NumberFormat().format(
+            mySnowVal - inputCost
+          );
 
-          this.balance.textContent =
-            "❄️ " +
-            new Intl.NumberFormat().format(
-              (balanceVal ? balanceVal : 0) + inputCost
-            );
+          this.balance.textContent = new Intl.NumberFormat().format(
+            (balanceVal ? balanceVal : 0) + inputCost
+          );
           console.log("입금 성공");
         } else {
           alert("눈송이가 부족해요!");
@@ -80,9 +79,10 @@ class VendingMachine {
       const mySnowVal = parseInt(this.mySnow.textContent.replaceAll(",", ""));
 
       if (balanceVal) {
-        this.mySnow.textContent =
-          "❄️ " + new Intl.NumberFormat().format(balanceVal + mySnowVal);
-        this.balance.textContent = "❄️ ";
+        this.mySnow.textContent = new Intl.NumberFormat().format(
+          balanceVal + mySnowVal
+        );
+        this.balance.textContent = null;
       }
     });
 
@@ -110,8 +110,9 @@ class VendingMachine {
 
         // 입금된 눈송이가 제품 값보다 많거나 같을 경우
         if (balanceVal >= targetElPrice) {
-          this.balance.textContent =
-            "❄️ " + new Intl.NumberFormat().format(balanceVal - targetElPrice);
+          this.balance.textContent = new Intl.NumberFormat().format(
+            balanceVal - targetElPrice
+          );
 
           for (const item of stagedListItem) {
             if (item.dataset.item === targetEl.dataset.item) {
@@ -140,6 +141,47 @@ class VendingMachine {
           alert("눈송이가 부족해요! 눈송이를 더 넣어주세요!");
         }
       });
+    });
+
+    /**
+     * 4. 획득 버튼 기능
+     * 획득 버튼을 누르면
+     * 선택한 아이템 목록이 획득한 아이템 목록으로 이동
+     * 획득한 아이템의 금액을 모두 합해 총금액을 업데이트
+     */
+
+    this.btnGet.addEventListener("click", (event) => {
+      let isGot = false;
+      let totalPrice = 0;
+
+      for (const itemStaged of this.stagedList.querySelectorAll("li")) {
+        for (const itemGot of this.gotList.querySelectorAll("li")) {
+          let itemGotCount = itemGot.querySelector(".num-counter");
+
+          if (itemStaged.dataset.item === itemGot.dataset.item) {
+            itemGotCount.textContent =
+              parseInt(itemGotCount.textContent) +
+              parseInt(itemStaged.querySelector(".num-counter").textContent);
+            isGot = true;
+            break;
+          }
+        }
+
+        if (!isGot) {
+          this.gotList.appendChild(itemStaged);
+        }
+      }
+
+      this.stagedList.innerHTML = null;
+
+      this.gotList.querySelectorAll("li").forEach((itemGot) => {
+        totalPrice +=
+          itemGot.dataset.price *
+          parseInt(itemGot.querySelector(".num-counter").textContent);
+      });
+      this.txtTotal.textContent = `총 눈송이 : ❄️ ${new Intl.NumberFormat().format(
+        totalPrice
+      )}`;
     });
   }
 }
