@@ -1,8 +1,24 @@
+/* 공통 스타일 설정 */
 * {
   margin: 0 auto;
   box-sizing: border-box;
 }
 
+* ::-webkit-scrollbar {
+  width: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+* ::-webkit-scrollbar-thumb {
+  background-color: var(--dark-stroke-color);
+  border-radius: 10px;
+}
+
+* ::-webkit-scrollbar-track {
+  background-color: var(--side-bg-color);
+  border-radius: 10px;
+}
 button:hover {
   cursor: pointer;
 }
@@ -22,8 +38,10 @@ button:hover {
   overflow: hidden;
 }
 
+/* 레이아웃 */
 body {
   background-color: var(--main-bg-color);
+  margin: 0 auto;
 }
 
 .img-top {
@@ -70,7 +88,6 @@ body {
 }
 
 .btn-item:active {
-  /* border-radius: 10px; */
   outline: 3px solid #4d7c5a;
 }
 
@@ -92,10 +109,6 @@ body {
   pointer-events: none;
 }
 
-.img-item {
-  display: block;
-}
-
 .tit-item {
   font-size: 12px;
 }
@@ -107,9 +120,16 @@ body {
   line-height: 20px;
   color: #fff;
   font-size: 11px;
-  background-color: #9a6f1e;
+  background-color: var(--light-stroke-color);
   border-radius: 20px;
   margin: 6px auto 0;
+}
+
+/* 왼쪽 자판기 하단 */
+.section-purchase {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .info-balance {
@@ -120,7 +140,6 @@ body {
   line-height: 32px;
   background-color: #fff;
   margin-right: 10px;
-  box-sizing: border-box;
   padding-left: 10px;
 }
 
@@ -130,7 +149,7 @@ body {
   height: 32px;
   border-radius: 5px;
   border: none;
-  background-color: #9a6f1e;
+  background-color: var(--light-stroke-color);
 }
 
 .section-inp {
@@ -147,8 +166,6 @@ body {
   background-color: #fff;
   margin-right: 10px;
   border: none;
-
-  box-sizing: border-box;
   padding-left: 10px;
 }
 
@@ -198,7 +215,7 @@ body {
   align-items: center;
   width: 30px;
   height: 30px;
-  border: 1px solid #9a6f1e;
+  border: 1px solid var(--light-stroke-colo);
   border-radius: 5px;
 }
 
@@ -214,21 +231,97 @@ body {
   border: none;
 }
 
+/* 우측 내 정보 영역 */
 .my-info {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 360px;
 }
 
 .my-budget {
+  position: relative;
+  padding: 25px;
   height: 161px;
   background-color: #fff;
   border-radius: 10px;
 }
 
+.cont-campaign {
+  width: 308px;
+  height: 51px;
+  background-color: var(--side-bg-color);
+  text-align: center;
+  padding-top: 10px;
+}
+
+.cont-campaign::after {
+  content: url(../images/star.png);
+  position: absolute;
+  left: 37px;
+  top: 35px;
+}
+
+.cont-campaign strong {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.cont-campaign p {
+  font-size: 9px;
+}
+
+progress {
+  margin-top: 20px;
+  margin-bottom: 18px;
+  width: 265px;
+}
+
+progress::after {
+  content: url(../images/star.png);
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+}
+
+.text-mysnowflake {
+  bottom: 0;
+  font-size: 14px;
+}
+
+.amount-mysnowflake {
+  position: absolute;
+  right: 30px;
+  font-size: 14px;
+}
+
+/* 우측 하단 나의 오너먼트 영역*/
 .my-ornament {
+  position: relative;
+  padding: 25px;
   height: 360px;
   background-color: #fff;
   border-radius: 10px;
+  text-align: center;
+}
+
+.my-ornament h3 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.my-info .list-item-staged {
+  height: 250px;
+  background-color: #4d7c5a;
+  margin-top: 20px;
+  width: 305px;
+}
+
+.text-total {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 12px;
 }
