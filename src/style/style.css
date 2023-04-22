@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@200,400&display=swap");
+
 /* 공통 스타일 설정 */
 * {
   margin: 0 auto;
@@ -303,9 +305,26 @@ body {
 }
 
 progress {
-  margin-top: 20px;
-  margin-bottom: 18px;
+  appearance: none;
   width: 265px;
+  height: 12px;
+}
+
+progress::-webkit-progress-bar {
+  margin-top: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: inset 3px 3px 10px #ccc;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 10px;
+  background: var(--dark-stroke-color);
+  background: linear-gradient(
+    to right,
+    var(--light-stroke-color),
+    var(--dark-stroke-color)
+  );
 }
 
 progress::after {
@@ -315,6 +334,11 @@ progress::after {
   position: absolute;
   right: 30px;
   bottom: 40px;
+}
+
+.info-mysnowflake {
+  margin-top: 40px;
+  font-size: 14px;
 }
 
 .text-mysnowflake {
@@ -339,7 +363,7 @@ progress::after {
 }
 
 .my-ornament h3 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -358,5 +382,77 @@ progress::after {
   position: absolute;
   bottom: 25px;
   right: 25px;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+/* 모달창 */
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  border-radius: 10px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.3);
+}
+
+#modal .modal-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 590px;
+  height: 610px;
+  background: no-repeat center/600px 620px url(../images/envelope.png);
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+#modal .tit-modal {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 70px;
+}
+
+#modal .text-modal {
+  font-size: 16px;
+  margin-top: 35px;
+}
+
+#modal .img-modal {
+  width: 35%;
+}
+
+#modal .footer-modal {
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+#modal .copyright-modal {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+#modal .btn-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background-color: transparent;
+  border: none;
+}
+
+.fa-snowflake {
+  animation: fall 5s linear forwards;
+  color: #fff;
+  position: absolute;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(90vh);
+  }
 }

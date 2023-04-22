@@ -7,6 +7,12 @@
     <title>Christmas Vending Machine</title>
     <link rel="stylesheet" href="./src/style/reset.css" />
     <link rel="stylesheet" href="./src/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <article id="app">
@@ -71,7 +77,12 @@
               <strong>소원별을 모아 기부를 해보세요!</strong>
               <p>소원별이 10개 모이면, 별 하나당 100원이 기부됩니다.</p>
             </article>
-            <progress id="progress" value="0" min="0" max="10"></progress>
+            <progress
+              class="bar-wish-star"
+              id="progress"
+              value="0"
+              max="100"
+            ></progress>
             <p class="info-mysnowflake">
               내 눈송이 :
               <span class="amount-mysnowflake">50,000</span>
@@ -82,10 +93,31 @@
           <section class="my-ornament">
             <h3 class="tit-myitem">나의 오너먼트</h3>
             <ul class="list-item-staged"></ul>
-            <strong class="text-total">총 눈송이 : ❄️ </strong>
+            <strong class="text-total">총 사용한 눈송이 : ❄️ </strong>
           </section>
         </section>
       </main>
+    </article>
+
+    <article id="modal">
+      <h2 class="ir">소원별 기부 모달창</h2>
+      <article class="modal-wrap">
+        <h3 class="ir">기부 모달창 내용</h3>
+        <p class="tit-modal">Thank You For Your Kindness!</p>
+        <p class="text-modal">
+          💚 고객님의 소원별을 행복한 크리스마스를 꿈꾸는 아이들에게 전달했어요!
+          💚
+        </p>
+        <img src="./src/images/cristmas_charity.png" alt="" class="img-modal" />
+        <p class="footer-modal">
+          🎁 소원별 10개 당 1,000원이 기부됩니다. 🎁
+          <br />기부금은 투명하게 사용됩니다.
+        </p>
+        <p class="copyright-modal">크리스마스좋아협회🎄</p>
+      </article>
+      <button type="button" class="btn-close">
+        <img src="./src/images/close-icon.png" alt="닫기" />
+      </button>
     </article>
     <script type="module" src="src/js/index.js"></script>
   </body>
