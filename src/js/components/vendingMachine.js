@@ -1,3 +1,5 @@
+let donation = 0;
+
 class VendingMachine {
   constructor() {
     const vMachine = document.querySelector(".vending-machine");
@@ -10,9 +12,16 @@ class VendingMachine {
     this.stagedList = vMachine.querySelector(".list-item-staged");
 
     const myInfo = document.querySelector(".my-info");
+    this.barWishStar = myInfo.querySelector(".bar-wish-star");
     this.mySnow = myInfo.querySelector(".amount-mysnowflake");
     this.gotList = myInfo.querySelector(".list-item-staged");
     this.txtTotal = myInfo.querySelector(".text-total");
+
+    this.modal = document.querySelector("#modal");
+    this.btnClose = document.querySelector(".btn-close");
+
+    this.myItemCount = 0;
+    this.charity = 0;
   }
   setup() {
     this.bindEvents();
@@ -154,7 +163,16 @@ class VendingMachine {
       let isGot = false;
       let totalPrice = 0;
 
+      //   소원별 카운트
+      this.stagedList.querySelectorAll(".num-counter").forEach((count) => {
+        this.myItemCount += parseInt(count.textContent);
+      });
+
+      console.log("myItemCount ===" + this.myItemCount);
+
+      //   장바구니에 담은 상품과 이미 구입한 목록을 비교
       for (const itemStaged of this.stagedList.querySelectorAll("li")) {
+        isGot = false;
         for (const itemGot of this.gotList.querySelectorAll("li")) {
           let itemGotCount = itemGot.querySelector(".num-counter");
 
@@ -172,14 +190,33 @@ class VendingMachine {
         }
       }
 
+      this.barWishStar.setAttribute("value", `${this.myItemCount * 10}`);
+
+      if (this.myItemCount >= 10) {
+        this.charity = Math.floor(this.myItemCount / 10);
+        donation = this.charity;
+        setTimeout(() => {
+          modal.style.display = "block";
+          this.myItemCount -= 10 * this.charity;
+          this.barWishStar.setAttribute("value", `${this.myItemCount * 10}`);
+          //   this.gotList.innerHTML = null;
+        }, 1000);
+      }
+
       this.stagedList.innerHTML = null;
+
+      //   모달창 닫기
+      this.btnClose.addEventListener("click", (event) => {
+        modal.style.display = "none";
+        console.log("닫기 클릭");
+      });
 
       this.gotList.querySelectorAll("li").forEach((itemGot) => {
         totalPrice +=
           itemGot.dataset.price *
           parseInt(itemGot.querySelector(".num-counter").textContent);
       });
-      this.txtTotal.textContent = `총 눈송이 : ❄️ ${new Intl.NumberFormat().format(
+      this.txtTotal.textContent = `총 사용한 눈송이 : ❄️ ${new Intl.NumberFormat().format(
         totalPrice
       )}`;
     });
