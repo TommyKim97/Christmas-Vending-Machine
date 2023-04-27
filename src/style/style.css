@@ -95,7 +95,7 @@ body {
 }
 
 .btn-item:active {
-  outline: 3px solid var(--dark-stroke-color);
+  transform: scale(1.1);
 }
 
 .vending-machine .list-item li {
