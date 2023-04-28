@@ -4,6 +4,8 @@
 
 ## 🎄크리스마스 벤딩머신🎄
 
+[🔗 실행 링크](https://tommykim97.github.io/Christmas-Vending-Machine/)
+
 ### 🔍 프로젝트 소개 | About Project
 
 크리스마스 트리 장식을 구매할 수 있는 벤딩머신입니다.<br/>
